@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Teko" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+    <div class="container mainScreen">
+        <h1 class="title">Hello {{ username }}!</h1>
+        <div class="menuButtonContainer">
+            <a href="/{{username}}"><button class="menubutton">Player Menu</button></a>
+        </div>
+        <h2 class="answerText">Your score: {{ score }}</h2>
+        <h2 class="answerText">Riddle {{riddle_index + 1}} of 12</h2>
+        <div class="usernameInput">
+            <!-- FORM -->
+            <div class="userInput">
+                <!-- JSON DATA-->
+                <h3 class="riddle"> {{ riddles_data[riddle_index]["description"] }} </h3>
+                <img class="picture" src="{{ url_for('static', filename=riddles_data[riddle_index]["picture"]) }}"></img>
+            </div>
+        </div>
+        <div class="centerForm">
+            <form method="POST" class="form-inline">
+                <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
+                <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
+                <input type="hidden" name="score" id="score" value={{score}}>
+                <input type="hidden" name="tries" id="tries" value={{tries}}>
+                <button class="btn btn-danger">Answer</button>
+            </form>
+        </div>
+        <div class="badanswers">
+            <p>{{ element_wrong_answer_text }}</p>
+        </div>
+    </div>
+    <footer>
+        <span class="footerTextLeft">&copy;2018 Maciej Pawelek</span>
+        <span class="footerTextRight">Project for Code Institute, Dublin</span>
+    </footer>
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Teko|Luckiest+Guy|Tangerine" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1 class="title">Quizon</h1>
+        <h2 class="titleSmall">Quiz Game created in Python</h2>
+    </div>
+    <div class="selectionBox">
+        <h5 class="menuText">Registered Players: {{ players_registered }}</h5>
+
+        <div class="smallContainer">
+            <a href="/login"><button class="buttons">Sign In</button></a>
+            <h7 class="menuText">Or</h7>
+            <a href="/register"><button class="buttons">Register</button></a>
+        </div>
+    </div>
+
+</body>
+<footer>
+    <span class="footerTextLeft">&copy;2018 Maciej Pawelek</span>
+    <span class="footerTextRight">Project for Code Institute, Dublin</span>
+</footer>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Teko|Luckiest+Guy|Tangerine" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css" />
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1 class="title">Quizon</h1>
+        <h2 class="titleSmall">Quiz Game created in Python</h2>
+    </div>
+    <div class="selectionBoxPlayer">
+        <p>Welcome, {{ username }}</p>
+        <p>Number of Questions: {{ questions }}</p>
+        <p>You've registered on: {{ player_register }}</p>
+        <p>Games played: {{ player_games_played }}</p>
+        <p>Last Score: {{ player_last_score }}</p>
+        <p>Top Score: {{ player_top_score }}</p>
+        <p>Last Wrong answer: {{ player_bad_answer }}</p>
+        <p>Game Status: {{ player_status }}</p>
+        <p>Current Round: {{ player_current_round + 1 }}</p>
+        <p>Score: {{ player_score }}</p>
+        <div class="buttonAgain">
+            <div class="homeButton"><a href="/{{username}}/play"><button class="buttons">Continue</button></a></div>
+            <div class="homeButton"><a href="/{{username}}/highscore"><button class="buttons">Top Players</button></a></div>
+            <div class="homeButton"><a href="/{{username}}/logoff"><button class="btn btn-danger againButon lgbut">Log Out</button></a></div>
+        </div>
+    </div>
+
+
+    <footer>
+        <span class="footerTextLeft">&copy;2018 Maciej Pawelek</span>
+        <span class="footerTextRight">Project for Code Institute, Dublin</span>
+    </footer>
+</body>
+
+</html>
